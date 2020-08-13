@@ -1,0 +1,26 @@
+* {
+    /* Permet que les largeurs soient calculées depuis le border */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#birdsList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bird {
+    border: 1px solid lightgray;
+    text-align: center;
+    width: 25%;
+}
+
+.bird--bg1 {
+    background-color: lightpink;
+}
+.bird--bg2 {
+    background-color: lightskyblue;
+}

@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Angry birds fansite{% endblock %}
+
+{% block body %}
+
+<h2>Games that lodge in the brain often have comical stars</h2>
+
+{% set last_bird_id = app.session.get('lastBirdId') %}
+{# On conditionne l'affichage du lien que si id existe #}
+{% if last_bird_id is not null %}
+<p>Last bird seen: <a href="{{ path('bird_show', {id: last_bird_id}) }}">{{ birds[last_bird_id].name }}</a></p>
+{% endif %}
+
+<p><a href="{{ path('download') }}">Download PDF Calendar</a></p>
+<!-- Via un lien HTTP => pas ce qu'on veut -->
+<p><a href="{{ asset('files/angry_birds_2015_calendar.pdf') }}">Display PDF Calendar</a></p>
+
+<!-- Commentaire HTML -->
+{# Ceci est un commentaire Twig / ne sera pas affiché dans le HTML #}
+
+<div id="birdsList">
+{# foreach ($birds as $bird) #}
+{% for index, bird in birds %}
+    {#
+        On cycle sur un tableau de classes CSS, depuis loop.index0 (0, 1, 2, 3, ...)
+        https://twig.symfony.com/doc/2.x/functions/cycle.html
+    #}
+    <div class="bird bird--{{ cycle(['bg1', 'bg2'], loop.index0) }}">
+        <a href="{{ path('bird_show', {id: index}) }}">
+            <img src="{{ asset('images/' ~ bird.image) }}">
+            <div>{{ bird.name }}</div>
+        </a>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
+

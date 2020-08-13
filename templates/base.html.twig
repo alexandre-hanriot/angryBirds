@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% block css %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <h1>A Field Guide to Angry Birds</h1>
+        </header>
+        {% block body %}{% endblock %}
+        <footer>
+            <hr>
+            <p>Site créé avec amour &hearts; pour la spé Symfo</p>
+        </footer>
+    </body>
+</html>
